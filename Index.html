@@ -1,0 +1,1734 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#080811">
+<meta name="description" content="VORTEX — اكتشف الأدوات الرقمية والمشروعات التقنية في عالم مستقبلي.">
+
+<title>VORTEX | Enter The Future</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #080811;
+    --bg2: #0d0d1a;
+    --panel: #111120;
+    --panel2: #17172a;
+    --purple: #9865ff;
+    --pink: #ed6aff;
+    --cyan: #62e9ff;
+    --text: #f5f3ff;
+    --muted: #9996b5;
+    --border: rgba(180, 150, 255, .15);
+    --glow: 0 0 35px rgba(152, 101, 255, .15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 95px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Cairo", sans-serif;
+    overflow-x: hidden;
+}
+
+body, button, input {
+    font-family: "Cairo", sans-serif;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+/* خلفية فضائية */
+
+.ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 15% 15%, #5427a51e, transparent 38%),
+        radial-gradient(ellipse at 85% 60%, #d34aff0d, transparent 35%),
+        var(--bg);
+}
+
+.ambient::before,
+.ambient::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .12;
+    animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+.ambient::before {
+    background: var(--purple);
+    top: -200px;
+    right: -150px;
+}
+
+.ambient::after {
+    background: #5e36ff;
+    bottom: -250px;
+    left: -150px;
+    animation-delay: -6s;
+}
+
+@keyframes floatGlow {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(60px, 40px) scale(1.2); }
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .55;
+}
+
+/* الشريط العلوي */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8, 8, 17, .82);
+    backdrop-filter: blur(20px);
+}
+
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+    padding: 14px 25px;
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    direction: ltr;
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-family: Arial, sans-serif;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    white-space: nowrap;
+}
+
+.logo-symbol {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--purple);
+    border-radius: 12px;
+    color: var(--cyan);
+    font-size: 24px;
+    box-shadow: inset 0 0 15px #9865ff19, 0 0 18px #9865ff20;
+    transform: rotate(-8deg);
+}
+
+.logo-word {
+    background: linear-gradient(100deg, white 15%, var(--purple) 60%, var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+}
+
+.nav-links a {
+    color: #aaa7c3;
+    font-size: 12px;
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.nav-cta {
+    padding: 11px 18px;
+    border: 1px solid #9865ff80;
+    border-radius: 8px;
+    background: #9865ff12;
+    color: #d7c5ff;
+    font-size: 11px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.nav-cta:hover {
+    background: var(--purple);
+    color: white;
+    box-shadow: 0 0 25px #9865ff50;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 9px;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+}
+
+/* المحتوى */
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding-inline: 25px;
+}
+
+/* الواجهة الرئيسية */
+
+.hero {
+    min-height: 670px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 45px;
+    padding-top: 65px;
+    padding-bottom: 70px;
+}
+
+.hero-content {
+    animation: enter .9s ease both;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: #ffffff05;
+    color: #c7b7ff;
+    font-size: 10px;
+    margin-bottom: 28px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #6dffbb;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #6dffbb;
+}
+
+.hero h1 {
+    font-size: clamp(44px, 5.5vw, 76px);
+    line-height: 1.3;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 22px;
+}
+
+.gradient-text {
+    background: linear-gradient(100deg, var(--purple), var(--pink) 55%, var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 22px #9865ff28);
+}
+
+.hero-description {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2.2;
+    max-width: 490px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 23px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(110deg, #7545ed, #a65cff);
+    box-shadow: 0 8px 30px #9865ff30;
+    border: 1px solid #c4a6ff55;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 38px #9865ff50;
+}
+
+.btn-secondary {
+    color: #ded7ff;
+    border: 1px solid var(--border);
+    background: #ffffff04;
+}
+
+.btn-secondary:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.hero-footnote {
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #8c89a8;
+    font-size: 10px;
+}
+
+.mini-dots {
+    display: flex;
+    direction: ltr;
+    padding-left: 5px;
+}
+
+.mini-dots span {
+    width: 22px;
+    height: 22px;
+    margin-left: -5px;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9a65ff, #43d8ff);
+}
+
+/* العنصر البصري */
+
+.hero-art {
+    min-height: 440px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    perspective: 1000px;
+}
+
+.art-grid {
+    position: absolute;
+    inset: 5%;
+    background-image:
+        linear-gradient(#9865ff0c 1px, transparent 1px),
+        linear-gradient(90deg, #9865ff0c 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse, black, transparent 72%);
+}
+
+.orbital {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid #9865ff55;
+    border-radius: 50%;
+    transform: rotateX(65deg) rotateZ(-20deg);
+    box-shadow: 0 0 40px #9865ff0d, inset 0 0 30px #9865ff0d;
+}
+
+.orbital.two {
+    width: 390px;
+    height: 390px;
+    border-color: #62e9ff28;
+    transform: rotateX(68deg) rotateZ(55deg);
+}
+
+.orbital.three {
+    width: 250px;
+    height: 250px;
+    border-color: #ed6aff4a;
+    transform: rotateX(68deg) rotateZ(-60deg);
+}
+
+.core {
+    width: 190px;
+    height: 190px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 2;
+    border: 1px solid #b18aff88;
+    border-radius: 43px;
+    background:
+        radial-gradient(circle at 35% 25%, #c1a6ff35, transparent 45%),
+        linear-gradient(145deg, #20153f, #0d1025 70%);
+    box-shadow:
+        0 0 70px #9865ff27,
+        inset 0 0 35px #9865ff17;
+    transform: rotate(-12deg);
+    animation: coreFloat 5s ease-in-out infinite;
+}
+
+.core::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    border: 1px solid #62e9ff30;
+    border-radius: 32px;
+}
+
+.core-logo {
+    direction: ltr;
+    font-family: Arial, sans-serif;
+    font-size: 85px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--cyan);
+    text-shadow: 0 0 25px #62e9ff55;
+}
+
+@keyframes coreFloat {
+    0%, 100% { transform: translateY(0) rotate(-12deg); }
+    50% { transform: translateY(-13px) rotate(-7deg); }
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 3;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #11111edc;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--glow);
+    animation: cardFloat 5s ease-in-out infinite;
+}
+
+.floating-card .f-icon {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: #9865ff20;
+    color: var(--cyan);
+    font-size: 17px;
+}
+
+.floating-card strong {
+    display: block;
+    font-size: 11px;
+}
+
+.floating-card small {
+    display: block;
+    color: var(--muted);
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+.card-one {
+    top: 55px;
+    right: 0;
+}
+
+.card-two {
+    bottom: 75px;
+    left: -5px;
+    animation-delay: -2.5s;
+}
+
+.card-three {
+    bottom: 15px;
+    right: 20%;
+    animation-delay: -1.2s;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* الإحصائيات */
+
+.stats-strip {
+    border-block: 1px solid var(--border);
+    background: #ffffff03;
+}
+
+.stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 26px;
+    padding-bottom: 26px;
+}
+
+.stat {
+    text-align: center;
+    padding: 5px 15px;
+    border-left: 1px solid var(--border);
+}
+
+.stat:last-child {
+    border-left: none;
+}
+
+.stat strong {
+    display: block;
+    direction: ltr;
+    font-family: Arial, sans-serif;
+    font-size: 29px;
+    letter-spacing: -1px;
+}
+
+.stat strong span {
+    color: var(--purple);
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 8px;
+}
+
+/* الأقسام */
+
+.section {
+    padding-top: 100px;
+    padding-bottom: 25px;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 45px;
+}
+
+.section-kicker {
+    color: var(--cyan);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 13px;
+}
+
+.section-header h2 {
+    font-size: clamp(29px, 4vw, 43px);
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+.section-header p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 2.1;
+    margin-top: 12px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.feature-card {
+    position: relative;
+    padding: 27px;
+    min-height: 230px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #151525a8, #0e0e18a8);
+    overflow: hidden;
+    transition: .35s;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 160px;
+    height: 160px;
+    background: var(--purple);
+    filter: blur(90px);
+    opacity: 0;
+    transition: .35s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    border-color: #9865ff66;
+    box-shadow: 0 15px 45px #0002, var(--glow);
+}
+
+.feature-card:hover::before {
+    opacity: .18;
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    color: var(--cyan);
+    border: 1px solid #62e9ff25;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #9865ff18, #62e9ff0c);
+    margin-bottom: 21px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 2.1;
+}
+
+.feature-number {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    direction: ltr;
+    color: #ffffff15;
+    font-family: Arial, sans-serif;
+    font-size: 29px;
+    font-weight: 900;
+}
+
+/* المشاريع */
+
+.projects-section {
+    padding-top: 105px;
+    padding-bottom: 100px;
+}
+
+.projects-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 27px;
+}
+
+.projects-toolbar h3 {
+    font-size: 19px;
+}
+
+.projects-toolbar p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.project-search {
+    width: min(300px, 100%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 13px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+.project-search input {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 11px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.project-card {
+    background: #11111de8;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #9865ff70;
+}
+
+.project-art {
+    height: 165px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 50%, #9865ff25, transparent 50%),
+        linear-gradient(145deg, #18172e, #0d0d18);
+}
+
+.project-art::before,
+.project-art::after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border: 1px solid #9865ff42;
+    border-radius: 30%;
+    transform: rotate(35deg);
+    transition: .5s;
+}
+
+.project-art::after {
+    width: 115px;
+    height: 115px;
+    border-color: #62e9ff50;
+    transform: rotate(65deg);
+}
+
+.project-card:hover .project-art::before {
+    transform: rotate(100deg) scale(1.1);
+}
+
+.project-card:hover .project-art::after {
+    transform: rotate(-20deg) scale(1.1);
+}
+
+.project-art span {
+    position: relative;
+    z-index: 1;
+    font-size: 48px;
+    filter: drop-shadow(0 0 20px #9865ff50);
+}
+
+.project-body {
+    padding: 20px;
+}
+
+.project-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.project-top h4 {
+    font-size: 14px;
+}
+
+.project-tag {
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: #9865ff19;
+    color: #bca7ff;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.project-body p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 2;
+    min-height: 44px;
+}
+
+.project-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 19px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.project-bottom span {
+    color: #7e7b98;
+    font-size: 10px;
+}
+
+.project-bottom button {
+    border: none;
+    background: transparent;
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 40px 10px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* الدعوة النهائية */
+
+.cta {
+    padding-bottom: 100px;
+}
+
+.cta-box {
+    position: relative;
+    text-align: center;
+    padding: 65px 25px;
+    overflow: hidden;
+    border: 1px solid #9865ff40;
+    border-radius: 23px;
+    background:
+        radial-gradient(ellipse at 50% 120%, #9865ff30, transparent 55%),
+        linear-gradient(140deg, #141126, #0e0e19);
+}
+
+.cta-box::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #9865ff1c;
+    border-radius: 50%;
+    top: -210px;
+    right: calc(50% - 150px);
+    box-shadow: 0 0 0 30px #9865ff06, 0 0 0 60px #9865ff04;
+}
+
+.cta-box h2 {
+    position: relative;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    position: relative;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+    max-width: 540px;
+    margin: 0 auto 25px;
+}
+
+.cta-box a {
+    position: relative;
+}
+
+/* الفوتر */
+
+footer {
+    border-top: 1px solid var(--border);
+    background: #080811a8;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+}
+
+.footer-description {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    font-size: 10px;
+    color: var(--muted);
+    transition: .2s;
+}
+
+.footer-links a:hover {
+    color: var(--cyan);
+}
+
+.copyright {
+    border-top: 1px solid var(--border);
+    padding: 16px;
+    text-align: center;
+    color: #77758f;
+    font-size: 10px;
+}
+
+/* إشعار تفاعلي */
+
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 50%;
+    transform: translate(50%, 15px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    background: #19172b;
+    color: #f5f3ff;
+    border: 1px solid #9865ff77;
+    border-radius: 10px;
+    padding: 13px 19px;
+    font-size: 11px;
+    box-shadow: 0 10px 35px #0005;
+    transition: .3s;
+    text-align: center;
+    width: max-content;
+    max-width: calc(100% - 30px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(50%, 0);
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 950px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .hero-art {
+        transform: scale(.85);
+    }
+
+    .features-grid,
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 680px) {
+    .container {
+        padding-inline: 18px;
+    }
+
+    .navbar {
+        min-height: 70px;
+        padding: 12px 17px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+
+    .logo-symbol {
+        width: 34px;
+        height: 34px;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-right: auto;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        order: 5;
+        padding: 10px 0 5px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px 8px;
+        border-top: 1px solid var(--border);
+        font-size: 12px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+        padding-bottom: 35px;
+        gap: 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 11vw, 65px);
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .hero-art {
+        min-height: 380px;
+        transform: scale(.88);
+        margin-top: -5px;
+    }
+
+    .orbital {
+        width: 260px;
+        height: 260px;
+    }
+
+    .orbital.two {
+        width: 310px;
+        height: 310px;
+    }
+
+    .orbital.three {
+        width: 210px;
+        height: 210px;
+    }
+
+    .core {
+        width: 155px;
+        height: 155px;
+        border-radius: 35px;
+    }
+
+    .core-logo {
+        font-size: 70px;
+    }
+
+    .card-one {
+        right: -8px;
+    }
+
+    .card-two {
+        left: -8px;
+    }
+
+    .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 0;
+    }
+
+    .stat:nth-child(2) {
+        border-left: none;
+    }
+
+    .stat strong {
+        font-size: 25px;
+    }
+
+    .section {
+        padding-top: 75px;
+    }
+
+    .features-grid,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        min-height: 195px;
+    }
+
+    .project-art {
+        height: 190px;
+    }
+
+    .projects-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .project-search {
+        width: 100%;
+    }
+
+    .cta-box {
+        padding: 48px 20px;
+    }
+
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient"></div>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<header>
+    <div class="navbar container">
+
+        <a class="logo" href="#home" aria-label="VORTEX الرئيسية">
+            <span class="logo-symbol">V</span>
+            <span class="logo-word">VORTEX</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="فتح القائمة" aria-expanded="false">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">الرئيسية</a>
+            <a href="#features">المميزات</a>
+            <a href="#projects">المشروعات</a>
+            <a href="#about">عن VORTEX</a>
+        </nav>
+
+        <a href="#projects" class="nav-cta">استكشف المنصة ↗</a>
+
+    </div>
+</header>
+
+<main>
+
+    <!-- الواجهة الرئيسية -->
+
+    <section class="hero container" id="home">
+
+        <div class="hero-content">
+
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                عالم رقمي بلا حدود
+            </div>
+
+            <h1>
+                ادخل إلى<br>
+                عالم <span class="gradient-text">المستقبل.</span>
+            </h1>
+
+            <p class="hero-description">
+                مرحبًا بك في VORTEX، مساحة رقمية تجمع الابتكار والتقنية
+                والإبداع. اكتشف أدوات جديدة، واستكشف الأفكار، وابدأ
+                رحلتك نحو تجربة رقمية مختلفة.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    اكتشف المشروعات <span>↗</span>
+                </a>
+
+                <a href="#features" class="btn btn-secondary">
+                    اكتشف المميزات
+                </a>
+            </div>
+
+            <div class="hero-footnote">
+                <div class="mini-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span>مساحة واحدة. أفكار لا نهائية.</span>
+            </div>
+
+        </div>
+
+        <div class="hero-art" aria-label="تصميم ثلاثي الأبعاد مستوحى من المستقبل">
+
+            <div class="art-grid"></div>
+
+            <div class="orbital"></div>
+            <div class="orbital two"></div>
+            <div class="orbital three"></div>
+
+            <div class="core">
+                <span class="core-logo">V</span>
+            </div>
+
+            <div class="floating-card card-one">
+                <div class="f-icon">✦</div>
+                <div>
+                    <strong>ابتكار مستمر</strong>
+                    <small>Think beyond limits</small>
+                </div>
+            </div>
+
+            <div class="floating-card card-two">
+                <div class="f-icon">⌘</div>
+                <div>
+                    <strong>تقنية متطورة</strong>
+                    <small>Built for tomorrow</small>
+                </div>
+            </div>
+
+            <div class="floating-card card-three">
+                <div class="f-icon">↗</div>
+                <div>
+                    <strong>إبداع بلا حدود</strong>
+                    <small>Explore your potential</small>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- الإحصائيات -->
+
+    <section class="stats-strip">
+        <div class="stats-inner container">
+
+            <div class="stat">
+                <strong>01<span>.</span></strong>
+                <p>فكرة مختلفة</p>
+            </div>
+
+            <div class="stat">
+                <strong>∞</strong>
+                <p>إمكانيات بلا حدود</p>
+            </div>
+
+            <div class="stat">
+                <strong>24<span>/</span>7</strong>
+                <p>اكتشف في أي وقت</p>
+            </div>
+
+            <div class="stat">
+                <strong>100<span>%</span></strong>
+                <p>تصميم متجاوب</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- المميزات -->
+
+    <section class="section container" id="features">
+
+        <div class="section-header">
+            <div class="section-kicker">WHY VORTEX?</div>
+            <h2>أبعد من مجرد <span class="gradient-text">موقع.</span></h2>
+            <p>
+                تجربة رقمية مصممة لتمنحك وصولًا سريعًا إلى الأفكار
+                والأدوات والمشروعات بطريقة منظمة وسهلة الاستخدام.
+            </p>
+        </div>
+
+        <div class="features-grid">
+
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+                <div class="feature-icon">⌘</div>
+                <h3>عالم الأدوات الرقمية</h3>
+                <p>
+                    اكتشف مساحة منظمة للأدوات والمصادر الرقمية
+                    التي تساعدك على استكشاف أفكار جديدة.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">02</span>
+                <div class="feature-icon">◈</div>
+                <h3>تجربة بصرية مستقبلية</h3>
+                <p>
+                    تصميم داكن، وتدرجات نيون، وتفاصيل بصرية
+                    تجعل التنقل داخل الموقع ممتعًا وواضحًا.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+                <div class="feature-icon">⚡</div>
+                <h3>وصول سريع وسهل</h3>
+                <p>
+                    انتقل بين الأقسام وابحث عن المشروعات
+                    بسهولة، دون واجهات معقدة أو خطوات غير ضرورية.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- المشروعات -->
+
+    <section class="projects-section container" id="projects">
+
+        <div class="section-header">
+            <div class="section-kicker">EXPLORE THE ECOSYSTEM</div>
+            <h2>اكتشف عالم <span class="gradient-text">VORTEX</span></h2>
+            <p>
+                اختر المجال الذي يثير اهتمامك، واستكشف الأفكار
+                والمشروعات الرقمية المعروضة داخل المنصة.
+            </p>
+        </div>
+
+        <div class="projects-toolbar">
+            <div>
+                <h3>المجالات المتاحة</h3>
+                <p>ابحث عن المجال الذي يناسبك.</p>
+            </div>
+
+            <label class="project-search">
+                <span>⌕</span>
+                <input id="projectSearch" type="search"
+                       placeholder="ابحث عن مجال..."
+                       aria-label="البحث عن مجال">
+            </label>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+
+            <article class="project-card" data-search="تقنية برمجة تطوير كود">
+                <div class="project-art">
+                    <span>⌘</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-top">
+                        <h4>Vortex Dev</h4>
+                        <span class="project-tag">تطوير</span>
+                    </div>
+                    <p>
+                        مساحة لاستكشاف البرمجة وتطوير المواقع
+                        والتطبيقات والمشروعات التقنية.
+                    </p>
+                    <div class="project-bottom">
+                        <span>TECHNOLOGY</span>
+                        <button data-project="Vortex Dev">استكشف ↗</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-search="تصميم جرافيك إبداع فن">
+                <div class="project-art">
+                    <span>✧</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-top">
+                        <h4>Vortex Studio</h4>
+                        <span class="project-tag">إبداع</span>
+                    </div>
+                    <p>
+                        عالم للتصميم والأفكار البصرية والمشروعات
+                        الإبداعية التي تمنح كل فكرة طابعها الخاص.
+                    </p>
+                    <div class="project-bottom">
+                        <span>CREATIVE</span>
+                        <button data-project="Vortex Studio">استكشف ↗</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-search="أدوات إنتاجية تنظيم عمل">
+                <div class="project-art">
+                    <span>◈</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-top">
+                        <h4>Vortex Tools</h4>
+                        <span class="project-tag">أدوات</span>
+                    </div>
+                    <p>
+                        واجهة مخصصة للأدوات الرقمية التي تساعد
+                        على تنظيم العمل والوصول إلى الموارد.
+                    </p>
+                    <div class="project-bottom">
+                        <span>DIGITAL TOOLS</span>
+                        <button data-project="Vortex Tools">استكشف ↗</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-search="ألعاب جيمينج gaming">
+                <div class="project-art">
+                    <span>🎮</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-top">
+                        <h4>Vortex Gaming</h4>
+                        <span class="project-tag">ألعاب</span>
+                    </div>
+                    <p>
+                        مساحة لعالم الألعاب والمجتمعات الرقمية
+                        والمشروعات التفاعلية.
+                    </p>
+                    <div class="project-bottom">
+                        <span>GAMING</span>
+                        <button data-project="Vortex Gaming">استكشف ↗</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-search="ذكاء اصطناعي AI مستقبل">
+                <div class="project-art">
+                    <span>⟁</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-top">
+                        <h4>Vortex AI</h4>
+                        <span class="project-tag">ذكاء اصطناعي</span>
+                    </div>
+                    <p>
+                        مساحة مخصصة للأفكار المتعلقة بالذكاء الاصطناعي
+                        والتقنيات المستقبلية.
+                    </p>
+                    <div class="project-bottom">
+                        <span>ARTIFICIAL INTELLIGENCE</span>
+                        <button data-project="Vortex AI">استكشف ↗</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-search="مجتمع تواصل مشاركة">
+                <div class="project-art">
+                    <span>◎</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-top">
+                        <h4>Vortex Community</h4>
+                        <span class="project-tag">مجتمع</span>
+                    </div>
+                    <p>
+                        مساحة يمكن تطويرها لتجمع المستخدمين
+                        حول الاهتمامات والمشروعات المشتركة.
+                    </p>
+                    <div class="project-bottom">
+                        <span>COMMUNITY</span>
+                        <button data-project="Vortex Community">استكشف ↗</button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- الدعوة النهائية -->
+
+    <section class="cta container" id="about">
+
+        <div class="cta-box">
+            <div class="section-kicker">THE FUTURE STARTS HERE</div>
+
+            <h2>
+                فكّر بشكل مختلف.<br>
+                <span class="gradient-text">ابدأ مع VORTEX.</span>
+            </h2>
+
+            <p>
+                كل فكرة عظيمة تبدأ بخطوة. استكشف المنصة،
+                واكتشف الإمكانيات، واجعل فكرتك القادمة بداية لشيء مميز.
+            </p>
+
+            <a href="#projects" class="btn btn-primary">
+                ابدأ الاستكشاف ↗
+            </a>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div class="footer-inner container">
+
+        <div>
+            <a class="logo" href="#home">
+                <span class="logo-symbol">V</span>
+                <span class="logo-word">VORTEX</span>
+            </a>
+            <p class="footer-description">
+                بوابتك إلى عالم رقمي أكثر إبداعًا.
+            </p>
+        </div>
+
+        <nav class="footer-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#features">المميزات</a>
+            <a href="#projects">المشروعات</a>
+            <a href="#about">عن المنصة</a>
+        </nav>
+
+    </div>
+
+    <div class="copyright">
+        © <span id="year"></span> VORTEX. جميع الحقوق محفوظة.
+    </div>
+
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+// السنة الحالية
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// قائمة الهاتف
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "إغلاق القائمة" : "فتح القائمة");
+    menuToggle.textContent = isOpen ? "×" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "فتح القائمة");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// البحث داخل بطاقات المشروعات
+const projectSearch = document.getElementById("projectSearch");
+const projectCards = [...document.querySelectorAll(".project-card")];
+const projectGrid = document.getElementById("projectGrid");
+
+projectSearch.addEventListener("input", () => {
+    const query = projectSearch.value.trim().toLocaleLowerCase("ar");
+    let visibleCount = 0;
+
+    projectCards.forEach(card => {
+        const searchableText = (
+            card.dataset.search + " " + card.innerText
+        ).toLocaleLowerCase("ar");
+
+        const matches = searchableText.includes(query);
+
+        card.hidden = !matches;
+
+        if (matches) visibleCount++;
+    });
+
+    const existingMessage = document.getElementById("noResults");
+
+    if (existingMessage) existingMessage.remove();
+
+    if (visibleCount === 0) {
+        const message = document.createElement("div");
+        message.id = "noResults";
+        message.className = "no-results";
+        message.textContent = "لم نعثر على مجال مطابق لبحثك.";
+        projectGrid.appendChild(message);
+    }
+});
+
+// إشعارات الأزرار
+const toast = document.getElementById("toast");
+let toastTimer;
+
+function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2600);
+}
+
+document.querySelectorAll("[data-project]").forEach(button => {
+    button.addEventListener("click", () => {
+        const name = button.dataset.project;
+
+        showToast(
+            `${name}: هذا القسم تجريبي، ويمكن ربطه بصفحة مستقلة لاحقًا.`
+        );
+    });
+});
+
+// جسيمات الخلفية
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let animationFrame;
+let canvasWidth = 0;
+let canvasHeight = 0;
+
+function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvasWidth = window.innerWidth;
+    canvasHeight = window.innerHeight;
+
+    canvas.width = Math.floor(canvasWidth * dpr);
+    canvas.height = Math.floor(canvasHeight * dpr);
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(65, Math.floor(canvasWidth / 19));
+
+    particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight,
+        radius: Math.random() * 1.5 + .3,
+        speed: Math.random() * .25 + .08,
+        alpha: Math.random() * .45 + .15
+    }));
+}
+
+function drawParticles() {
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    particles.forEach(particle => {
+        particle.y -= particle.speed;
+
+        if (particle.y < -5) {
+            particle.y = canvasHeight + 5;
+            particle.x = Math.random() * canvasWidth;
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = `rgba(170, 140, 255, ${particle.alpha})`;
+        ctx.fill();
+    });
+
+    animationFrame = requestAnimationFrame(drawParticles);
+}
+
+const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+);
+
+function startParticles() {
+    cancelAnimationFrame(animationFrame);
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    if (!reducedMotion.matches) {
+        drawParticles();
+    }
+}
+
+resizeCanvas();
+startParticles();
+
+window.addEventListener("resize", () => {
+    resizeCanvas();
+    startParticles();
+});
+
+if (reducedMotion.addEventListener) {
+    reducedMotion.addEventListener("change", startParticles);
+}
+</script>
+
+</body>
+</html>
+```
